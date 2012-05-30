@@ -1,5 +1,9 @@
+/**
+ * Chess.
+ */
+var chess = {
 
-var chess = chess || {};
+};
 
 /**
  * Set up the board.
