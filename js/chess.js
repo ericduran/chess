@@ -14,11 +14,11 @@ chess.setUpBoard = function() {
   row = [1, 2, 4, 4, 5, 6, 7, 8].reverse();
   flip = false;
   for (x in col) {
-    var $row = $('<div>');
+    var $row = $('<div>').attr('id', x);
     for (y in row) {
       $span = $('<span>').html('&nbsp;');
       $span.attr('id', col[x] + row[y]);
-      $span.addClass((flip ? ' grey' : 'black'));
+      $span.addClass((flip ? ' light' : 'dark'));
       $row.append($span);
       flip = !flip;
     }
@@ -27,12 +27,30 @@ chess.setUpBoard = function() {
   }
 }();
 
+
 /**
  * set up the chess peices in the board.
  * might just move this to the initial board setup.
  */
 chess.setUpPieces = function () {
-}
+  var x, iOrder, rows;
+  iOrder = ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'];
+
+  // TODO: Fix this.
+  $dark_row = $('#0 span');
+  $dark_pwns = $('#1 span');
+  $light_row = $('#7 span');
+  $light_pwns = $('#6 span');
+
+  $.each(iOrder, function(i, v) {
+    $($dark_row[i]).html($('<img>').attr('src', 'img/' + iOrder[i] + 'd.png').attr('id', iOrder[i] + 'd' + i ));
+    $($light_row[i]).html($('<img>').attr('src', 'img/' + iOrder[i] + 'l.png').attr('id', iOrder[i] + 'l' + i));
+    $($dark_pwns[i]).html($('<img>').attr('src', 'img/pd.png').attr('id', i + 'pd').attr('draggable', 'true'));
+    $($light_pwns[i]).html($('<img>').attr('src', 'img/pl.png').attr('id', i + 'pl').attr('draggable', 'true'));
+  });
+
+}();
+
 
 /**
  * Trying to figure out what a valid move is.

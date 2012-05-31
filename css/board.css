@@ -15,14 +15,18 @@ span {
   height: 90px;
   float: left;
   border: 1px solid #000;
+  text-align: center;
 }
 
-/** Board **/
-.grey {
-  background: #eee;
+img {
+  margin-top: 10px;
 }
-.black {
-  background: #000;
+/** Board **/
+.light {
+  background: #fff;
+}
+.dark {
+  background: #A3A3A3;
 }
 
 /** Pieces **/
